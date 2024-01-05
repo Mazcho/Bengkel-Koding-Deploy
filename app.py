@@ -182,13 +182,15 @@ with tab2:
                 # Lakukan prediksi dan tambahkan hasilnya ke dalam DataFrame result_df
                 prediction_tab2 = model.predict(data_tab2_normalized)
                 result_df = result_df.append({"Prediction Value": prediction_tab2[0], "Prediction Result": "Healthy" if prediction_tab2[0] == 0 else "Unhealthy"}, ignore_index=True)
-
+            
+            combined_df = pd.concat([uploaded_df, result_df], axis=1)
             # Menampilkan DataFrame yang diunggah dan hasil prediksinya
-            col1, col2 = st.columns([1, 2])
-            with col1:
-                st.dataframe(uploaded_df)
-            with col2:
-                st.dataframe(result_df)
+            st.dataframe(combined_df)
+            # col1, col2 = st.columns([1, 2])
+            # with col1:
+            #     st.dataframe(uploaded_df)
+            # with col2:
+            #     st.dataframe(result_df)
         else:
             st.warning("Uploaded DataFrame is empty.")
 

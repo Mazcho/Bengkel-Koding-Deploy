@@ -58,7 +58,8 @@ if menu == "Home":
     with col9:
         st.write("Bisa kita lihat pada hasil diagram diatas, menunjukkan bahwa pada kelas negativ ( orang yang tidak memiliki potensi serangan jantung) jumlah lebih sedikit dari pada orang oarang yang terkena potensi serang jantung. Kita ketahui bahwa rasa peduli orang orang dengan kesehatan jantungnya sangat sedikit sekali ")
     with col10:
-        st.write("Maka dari itu , banyak orang masih belum mengetahui cara menjaga kesehatan dari jantung. Menjaga kesehatan jantung itu sangatlah penting untuk kesehatan. Maka dari itu website Hello Heart menyajikan App berbasis web untuk melakukan pengecekan terhadap kondisi anda, dan memberikan tips untuk menjaga keseahtan jantung kalian semua")
+        perbandingan_mati_hidup = df["cp"].value_counts()
+        st.bar_chart(perbandingan_mati_hidup)
     
 
 elif menu == "App":

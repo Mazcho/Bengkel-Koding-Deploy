@@ -80,7 +80,6 @@ with tab1:
 
     #kolom sex, 1 untuk cowok 0 untuk cewek
     sex = int(st.selectbox("Sex", options=["Male", "Female"]) == "Male")
-    st.write(sex)
 
     #Chest pain tipenya
     cp_options = {
@@ -91,7 +90,6 @@ with tab1:
     }
     cp = st.selectbox("Chest Pain Type", options=list(cp_options.keys()), format_func=lambda x: cp_options[x])
     selected_value = cp_options[cp]
-    st.write(cp)
 
     #inputan untuk kolom trestbps
     trestbps = st.number_input("Trestbps mm Hg")
@@ -101,18 +99,16 @@ with tab1:
 
     #inputan untuk fbs dengan urutan sesuai index
     fbs = int(st.selectbox("Fasting Blood Sugar > 120 mg/dl", options=["True", "False"]) == "True")
-    st.write(fbs)
+
     restecg = ["Normal", "St-T Wave Abnormality", "Left Ventricular Hypertrophy"].index(
         st.selectbox("Resting Electrocardiographic Results", ["Normal", "St-T Wave Abnormality", "Left Ventricular Hypertrophy"])
     )
-    st.write(restecg)
 
     # inputan thalac
     thalac = st.number_input("Maximum Heart Rate Achieved")
 
     #inputan exan
     exang = int(st.selectbox("Exercise Induced Angina", options=["No", "Yes"]) == "Yes")
-    st.write(exang)
 
     #inputan oldpeak
     oldpeak = st.number_input("OldPeak")

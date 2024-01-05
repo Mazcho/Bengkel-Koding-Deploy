@@ -138,10 +138,9 @@ with tab1:
         st.write(datauser)
         # Now, you can use normalized_inputs for prediction
         prediction = model.predict(datauser_normalized)
-        st.write("Prediction:", prediction[0])  # Assuming prediction is a single value, you may need to adjust if it's an array
 
         if prediction[0] == 0:
-            st.succes("Healthy")
+            st.succes("👍 You are Healthy")
         else:
             st.error(" 💔 You are diagnosed with heart disease")
 

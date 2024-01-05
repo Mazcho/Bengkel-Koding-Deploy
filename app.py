@@ -74,7 +74,7 @@ with open("min_max_values.json", "r") as json_file:
 tab1,tab2 = st.tabs(["Single Predixt","Multi Predict"])
 
 with tab1:
-    col1,col2 = st.columns()
+    col1,col2 = st.columns(2)
 # membuat kolom inputan untuk single prediksi
     #kolom umur
     with col1:

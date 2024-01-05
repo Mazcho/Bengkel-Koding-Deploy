@@ -22,7 +22,9 @@ st.set_page_config(
 
 #========= Load MOdel ==========================
 # Load the pre-trained model
-algoritma_terpilih = st.sidebar.selectbox("Pilih Algoritma", options=["K-NN", "RandomForest", "xGBoost"])
+st.title("Hungarian Heart Disease")
+
+algoritma_terpilih = st.selectbox("Pilih Algoritma", options=["K-NN", "RandomForest", "xGBoost"])
 
 if algoritma_terpilih == "K-NN":
     with open('knnmodel.pkl', 'rb') as file:
@@ -66,7 +68,7 @@ accuracy = accuracy_score(y_test, y_pred)
 st.write(f"Accuracy dari pickel: ",round(accuracy*100,1))
 
 # ===================================================
-st.title("Hungarian Heart Disease")
+
 # Assume min_max_values.json contains the minimum and maximum values for normalization
 with open("min_max_values.json", "r") as json_file:
     min_max_values = json.load(json_file)

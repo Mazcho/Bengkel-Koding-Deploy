@@ -186,11 +186,6 @@ with tab2:
             combined_df = pd.concat([uploaded_df, result_df], axis=1)
             # Menampilkan DataFrame yang diunggah dan hasil prediksinya
             st.dataframe(combined_df)
-            # col1, col2 = st.columns([1, 2])
-            # with col1:
-            #     st.dataframe(uploaded_df)
-            # with col2:
-            #     st.dataframe(result_df)
         else:
             st.warning("Uploaded DataFrame is empty.")
 

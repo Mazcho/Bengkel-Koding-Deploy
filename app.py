@@ -38,7 +38,7 @@ if menu == "Home":
     st.header("Hi, Welcome to the Hungarian heart disease prediction website")
     col11,col12 = st.columns(2)
     with col11:
-        st.write("ini gambar")
+        st.image("1614245470hungary-heart-patriotic-symbol-removebg-preview.png")
     with col12:
         st.write("Welcome to Hungarian Heart, the superior platform for heart disease prediction in the Hungarian region! Based on data from a number of individuals in the region, we are proud to provide accurate predictions using some of the leading models. Our K-Nearest Neighbors (KNN) model has achieved an accuracy of 93.6%, while the XGBoost model shows an accuracy of 91.4%, and the Random Forest model reaches 92%. With this performance, Hungarian Heart is ready to help you detect and prevent potential risks of heart disease. Let's take care of your health together! 💓")
     

@@ -32,7 +32,7 @@ elif algoritma_terpilih == "RandomForest":
         model = pickle.load(file)
 
 elif algoritma_terpilih == "xGBoost":
-    model = joblib.load("xgboost_model.joblib")
+    model = joblib.load("xgboost_model_tuning.joblib")
 
 
 #========== Load Data Set ======================

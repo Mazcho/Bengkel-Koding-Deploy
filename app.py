@@ -143,7 +143,7 @@ with tab1:
         if prediction[0] == 0:
             st.write("Healthy")
         else:
-            st.write("Heart Disease")
+            st.error("Heart Disease")
 
 with tab2:
     #ini untuk multi prediksi

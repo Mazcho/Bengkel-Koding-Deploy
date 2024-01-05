@@ -33,7 +33,7 @@ elif algoritma_terpilih == "RandomForest":
         model = pickle.load(file)
 
 elif algoritma_terpilih == "xGBoost":
-    with open('knnmodel.pkl', 'rb') as file:
+    with open('xgBoost_tuning.pkl', 'rb') as file:
         model = pickle.load(file)
 
 

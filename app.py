@@ -82,6 +82,9 @@ elif menu=="About Data Set":
     st.write(info_dataset)
     st.markdown(f"Access to the dataset is available at: {link_uciml}")
 
+    #menampilkan dataframe
+    st.dataframe(df)
+
 elif menu == "App":
     st.title("Hungarian Heart Disease")
 

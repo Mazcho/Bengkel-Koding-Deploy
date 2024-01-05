@@ -20,6 +20,11 @@ st.set_page_config(
 )
 # ===================================
 
+
+#========== Load Data Set ======================
+df = pd.read_csv("Hungarian_Data.csv")
+#===============================================
+
 #========= Load MOdel ==========================
 # Load the pre-trained model
 with st.sidebar:
@@ -28,20 +33,20 @@ with st.sidebar:
         ("Home", "App")
     )
 if menu == "Home":
-    st.header("Hi, Selamat data di website hello heart")
+    st.header("Hi, Welcome to the Hungarian heart disease prediction website")
     col11,col12 = st.columns(2)
     with col11:
         st.write("ini gambar")
     with col12:
-        st.write("Hello heart adalah sebuah website yang digunakan untuk melakukan pendeteksian apakah seseorang ini berpotensi terkena penyakit jantung Cardiovascular illnesses (CVDs) . Web app ini berawal dari pengambilan sampel dari 1319 orang di wilayah boston pada 2 bulan terahkir. App ini menggunakan model dari Gradient Boosting Regresor dengan tinggal akurasi sebesar 99% untuk masing masing kelasnya. Jadi tidak perlu diragukan lagi untuk menggunakan web app ini untuk mendeteksi 0potensi serangan jantung pada masyarakat sekitar.")
+        st.write("Welcome to Hungarian Heart, the superior platform for heart disease prediction in the Hungarian region! Based on data from a number of individuals in the region, we are proud to provide accurate predictions using some of the leading models. Our K-Nearest Neighbors (KNN) model has achieved an accuracy of 93%, while the XGBoost model shows an accuracy of 90.1%, and the Random Forest model reaches 92%. With this performance, Hungarian Heart is ready to help you detect and prevent potential risks of heart disease. Let's take care of your health together! 💓")
     
     st.header("Analisis Singkat")
     st.write("Mengambil dari dataset yang ada, terdapat banyak orang yang terkena penyakit jantung pada umur 60 hingga 70 tahun adanya.Menurut grafik dibawah, menunjukkan bahwa mulai umur 20 pun juga sudah terkena penyakit serangan antung. Tentu hal ini sangat memprihatinkan untuk para pemuda pemuda di masa sekarang.")
     st.write("")
 
-    # #membuat grafik
-    # tingkatkematian_umur = df.groupby(["age","class"]).size().unstack()
-    # st.bar_chart(tingkatkematian_umur)
+    #membuat grafik
+    tingkat_serangan_jantung = df.groupby(["age","target"]).size().unstack()
+    st.bar_chart(tingkat_serangan_jantung)
 
     # #grafik 2
     # st.write("Dari jumlah kasus kematian yang ada pun juga jauh lebih tinggi dari pada yanh tidak meninggal. Grafik dibaah ini menunjukkan bahwa, 810 dari 1319 orang terkena penyakit jantung")
@@ -74,9 +79,7 @@ elif menu == "App":
             model = pickle.load(file)
 
 
-    #========== Load Data Set ======================
-    df = pd.read_csv("Hungarian_Data.csv")
-    #===============================================
+  
 
     #========== Oversampling Data Set ==============
     df_copy = df.copy()

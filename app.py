@@ -8,7 +8,7 @@ import time
 import pickle
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
-from xgboost import XGBClassifier
+#import xgboost as xgb
 import joblib
 
 import json
@@ -33,7 +33,8 @@ elif algoritma_terpilih == "RandomForest":
         model = pickle.load(file)
 
 elif algoritma_terpilih == "xGBoost":
-    model = joblib.load("xgboost_model_tuning.joblib")
+    with open('xgBoost_tuning.pkl', 'rb') as file:
+        model = pickle.load(file)
 
 
 #========== Load Data Set ======================

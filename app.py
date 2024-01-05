@@ -99,21 +99,22 @@ with tab1:
         #inputan untuk kolom chol
         chol = st.number_input("Serum Cholestoral in mg/dl")
 
-    #inputan untuk fbs dengan urutan sesuai index
-    fbs = int(st.selectbox("Fasting Blood Sugar > 120 mg/dl", options=["True", "False"]) == "True")
+    with col2:
+        #inputan untuk fbs dengan urutan sesuai index
+        fbs = int(st.selectbox("Fasting Blood Sugar > 120 mg/dl", options=["True", "False"]) == "True")
 
-    restecg = ["Normal", "St-T Wave Abnormality", "Left Ventricular Hypertrophy"].index(
-        st.selectbox("Resting Electrocardiographic Results", ["Normal", "St-T Wave Abnormality", "Left Ventricular Hypertrophy"])
-    )
+        restecg = ["Normal", "St-T Wave Abnormality", "Left Ventricular Hypertrophy"].index(
+            st.selectbox("Resting Electrocardiographic Results", ["Normal", "St-T Wave Abnormality", "Left Ventricular Hypertrophy"])
+        )
 
-    # inputan thalac
-    thalac = st.number_input("Maximum Heart Rate Achieved")
+        # inputan thalac
+        thalac = st.number_input("Maximum Heart Rate Achieved")
 
-    #inputan exan
-    exang = int(st.selectbox("Exercise Induced Angina", options=["No", "Yes"]) == "Yes")
+        #inputan exan
+        exang = int(st.selectbox("Exercise Induced Angina", options=["No", "Yes"]) == "Yes")
 
-    #inputan oldpeak
-    oldpeak = st.number_input("OldPeak")
+        #inputan oldpeak
+        oldpeak = st.number_input("OldPeak")
 
     #memb uat tombol prediksi
     predict_button = st.button("Predict", type="primary")

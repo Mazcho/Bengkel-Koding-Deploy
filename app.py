@@ -123,19 +123,19 @@ with tab1:
     #membuat data input menjadi dataframe
     data_input = [[age, sex, cp, trestbps, chol, fbs, restecg, thalac, exang, oldpeak]]
     datauser = pd.DataFrame(data_input, columns=["Age", "Sex", "ChestPainType", "Trestbps", "Chol", "Fbs", "Restecg", "Thalac", "Exang", "OldPeak"])
-    st.write(datauser)
+    
     # Normalize the inputs based on min_max_values
     normalized_inputs = [
     (value - min_max_values[key]["min"]) / (min_max_values[key]["max"] - min_max_values[key]["min"])
     for key, value in zip(min_max_values.keys(), [age, sex, cp, trestbps, chol, fbs, restecg, thalac, exang, oldpeak])
     ]
 
-    
+    # Reshape the normalized inputs into a DataFrame
+    datauser_normalized = pd.DataFrame([normalized_inputs], columns=["Age", "Sex", "ChestPainType", "Trestbps", "Chol", "Fbs", "Restecg", "Thalac", "Exang", "OldPeak"])
     
     #ini untuk triger ketika tombol predik dipencet
     if predict_button:
-        # Reshape the normalized inputs into a DataFrame
-        datauser_normalized = pd.DataFrame([normalized_inputs], columns=["Age", "Sex", "ChestPainType", "Trestbps", "Chol", "Fbs", "Restecg", "Thalac", "Exang", "OldPeak"])
+        st.write(datauser)
         # Now, you can use normalized_inputs for prediction
         prediction = model.predict(datauser_normalized)
         st.write("Prediction:", prediction[0])  # Assuming prediction is a single value, you may need to adjust if it's an array

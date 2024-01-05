@@ -31,7 +31,7 @@ if menu == "Home":
     st.header("Hi, Selamat data di website hello heart")
     col11,col12 = st.columns(2)
     with col11:
-        st.image("heart-rate_9108205.png",width = 300)
+        st.write("ini gambar")
     with col12:
         st.write("Hello heart adalah sebuah website yang digunakan untuk melakukan pendeteksian apakah seseorang ini berpotensi terkena penyakit jantung Cardiovascular illnesses (CVDs) . Web app ini berawal dari pengambilan sampel dari 1319 orang di wilayah boston pada 2 bulan terahkir. App ini menggunakan model dari Gradient Boosting Regresor dengan tinggal akurasi sebesar 99% untuk masing masing kelasnya. Jadi tidak perlu diragukan lagi untuk menggunakan web app ini untuk mendeteksi 0potensi serangan jantung pada masyarakat sekitar.")
     

@@ -155,9 +155,9 @@ with tab2:
 # ...
 
 # Normalisasi input di dalam tab 2
-if file_uploaded:
+if uploaded_df:
     # Menggunakan st.file_uploader untuk mengunggah file CSV
-    uploaded_df = pd.read_csv(file_uploaded)
+    uploaded_df = pd.read_csv(uploaded_df)
 
     # Load JSON values from file
     with open("min_max_values.json", "r") as json_file:

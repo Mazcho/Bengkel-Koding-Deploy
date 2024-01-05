@@ -58,9 +58,19 @@ if menu == "Home":
     with col9:
         st.write("Bisa kita lihat pada hasil diagram diatas, menunjukkan bahwa pada kelas negativ ( orang yang tidak memiliki potensi serangan jantung) jumlah lebih sedikit dari pada orang oarang yang terkena potensi serang jantung. Kita ketahui bahwa rasa peduli orang orang dengan kesehatan jantungnya sangat sedikit sekali ")
     with col10:
-        chest_pain_type = df["cp"].value_counts()
-        st.bar_chart(chest_pain_type)
-    
+            # Membuat mapping antara nilai dan label
+        mapping_cp = {
+            1: "Typical angina",
+            2: "Atypical angina",
+            3: "Non-anginal pain",
+            4: "Asymptomatic"
+        }
+
+    # Mengganti label pada sumbu x dengan mapping
+    chest_pain_type = df["cp"].map(mapping_cp).value_counts()
+
+    # Menampilkan diagram batang dengan label yang sudah diganti
+    st.bar_chart(chest_pain_type)
 
 elif menu == "App":
     st.title("Hungarian Heart Disease")

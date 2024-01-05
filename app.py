@@ -141,9 +141,9 @@ with tab1:
         st.write("Prediction:", prediction[0])  # Assuming prediction is a single value, you may need to adjust if it's an array
 
         if prediction[0] == 0:
-            st.write("Healthy")
+            st.succes("Healthy")
         else:
-            st.error("Heart Disease")
+            st.error(" 💔 You are diagnosed with heart disease")
 
 with tab2:
     #ini untuk multi prediksi

@@ -41,22 +41,18 @@ if menu == "Home":
         st.write("Welcome to Hungarian Heart, the superior platform for heart disease prediction in the Hungarian region! Based on data from a number of individuals in the region, we are proud to provide accurate predictions using some of the leading models. Our K-Nearest Neighbors (KNN) model has achieved an accuracy of 93%, while the XGBoost model shows an accuracy of 90.1%, and the Random Forest model reaches 92%. With this performance, Hungarian Heart is ready to help you detect and prevent potential risks of heart disease. Let's take care of your health together! 💓")
     
     st.header("Analisis Singkat")
-    st.write("Mengambil dari dataset yang ada, terdapat banyak orang yang terkena penyakit jantung pada umur 60 hingga 70 tahun adanya.Menurut grafik dibawah, menunjukkan bahwa mulai umur 20 pun juga sudah terkena penyakit serangan antung. Tentu hal ini sangat memprihatinkan untuk para pemuda pemuda di masa sekarang.")
+    st.write("In this brief analysis, 0.0 indicates that the person is healthy, and more than 0.0 indicates that the person has heart disease. From the data presented, there are 187 people who have good heart health (0.0), and as many as 106 people have a diagnosis of heart disease.")
     st.write("")
 
     #membuat grafik
     tingkat_serangan_jantung_by_umur = df.groupby(["age","target"]).size().unstack()
     st.bar_chart(tingkat_serangan_jantung_by_umur)
 
-    # #grafik 2
-    # st.write("Dari jumlah kasus kematian yang ada pun juga jauh lebih tinggi dari pada yanh tidak meninggal. Grafik dibaah ini menunjukkan bahwa, 810 dari 1319 orang terkena penyakit jantung")
-    # perbandingan_mati_hidup = df["class"].value_counts()
-    # st.bar_chart(perbandingan_mati_hidup)
 
-    st.header("Kesimpulan dari hasil analisis singkat")
+    st.header("chest pain type analysis Data")
     col9,col10 = st.columns(2)
     with col9:
-        st.write("Bisa kita lihat pada hasil diagram diatas, menunjukkan bahwa pada kelas negativ ( orang yang tidak memiliki potensi serangan jantung) jumlah lebih sedikit dari pada orang oarang yang terkena potensi serang jantung. Kita ketahui bahwa rasa peduli orang orang dengan kesehatan jantungnya sangat sedikit sekali ")
+        st.write("The data below shows that many people experience chest disease without symptoms. Asymptomatic chest pain refers to a condition in which a person does not feel chest pain or clinical symptoms that are usually associated with heart disease. "Asymptomatic" itself means without symptoms or not showing any disease. In the context of chest pain, people who experience chest pain without symptoms do not experience the pain or discomfort that is generally associated with heart problems.")
     with col10:
             # Membuat mapping antara nilai dan label
         mapping_cp = {

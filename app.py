@@ -70,6 +70,8 @@ if menu == "Home":
         # Menampilkan diagram batang dengan label yang sudah diganti
         st.bar_chart(chest_pain_type)
 elif menu=="About Data Set":
+
+    st.title(":red[_HUNGARIAN_] HEART :green[_WEBSITE_] _DataSet_")    
     # Informasi tentang dataset
     info_dataset = """
     This application utilizes the Hungarian Heart Disease Dataset sourced from the UCI Machine Learning Repository. 

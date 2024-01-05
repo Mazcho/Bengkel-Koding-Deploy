@@ -22,7 +22,7 @@ st.set_page_config(
 
 #========= Load MOdel ==========================
 # Load the pre-trained model
-algoritma_terpilih = st.selectbox("Algoritma", options=["K-NN", "RandomForest","xGBoost"])
+algoritma_terpilih = st.sidebar.selectbox("Pilih Algoritma", options=["K-NN", "RandomForest", "xGBoost"])
 
 if algoritma_terpilih == "K-NN":
     with open('knnmodel.pkl', 'rb') as file:
@@ -61,8 +61,6 @@ y_pred = model.predict(X_test)
 # kalkuliasi akurasi
 accuracy = accuracy_score(y_test, y_pred)
 
-
-st.sidebar(st.input_number("halo"))
 
 # Display the accuracy
 st.write(f"Accuracy dari pickel: ",round(accuracy*100,1))

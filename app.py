@@ -32,8 +32,8 @@ elif algoritma_terpilih == "RandomForest":
     with open('randomforest_Oversampled_normalisasi.pkl', 'rb') as file:
         model = pickle.load(file)
 
-# elif algoritma_terpilih == "xGBoost":
-#     model = joblib.load("xgboost_model_tuning.joblib")
+elif algoritma_terpilih == "xGBoost":
+    model = joblib.load("xgboost_model_tuning.joblib")
 
 
 #========== Load Data Set ======================

@@ -147,38 +147,39 @@ with tab1:
 with tab2:
     #ini untuk multi prediksi
     #upload csv
-    file_uploaded = st.file_uploader("Upload a CSV file", type='csv')
+    uploaded_df = st.file_uploader("Upload a CSV file", type='csv')
 
-    #untuk akses data dan memprediksi steiap barisnya 
-    if file_uploaded:
-        uploaded_df = pd.read_csv(file_uploaded)
-        prediction_arr = model.predict(uploaded_df)
+    # ...
 
-        bar = st.progress(0)
-        status_text = st.empty()
+# Normalisasi input di dalam tab 2
+if uploaded_df:
+    # Load JSON values from file
+    with open("min_max_values.json", "r") as json_file:
+        min_max_values_json = json.load(json_file)
 
-        value_pred = []
-        result_arr = []
+    # Iterate through each column in the uploaded DataFrame
+    for column in uploaded_df.columns:
+        # Check if the column is present in min_max_values_json
+        if column in min_max_values_json:
+            # Normalize the column values
+            uploaded_df[column] = (uploaded_df[column] - min_max_values_json[column]["min"]) / (min_max_values_json[column]["max"] - min_max_values_json[column]["min"])
 
-        #ini untuk memasukan hasil prediksi dan menambahkan pada array 
-        for prediction in prediction_arr:
-            if prediction == 0:
-                result = "Healthy"
-            else:
-                result = "Unhealty"
-            
-            value_pred.append(prediction)
-            result_arr.append(result)
-        
+    # Membuat DataFrame untuk hasil prediksi
+    result_df = pd.DataFrame(columns=["Prediction Value", "Prediction Result"])
 
-        #menampilkan dataframe dari array
-        uploaded_result = pd.DataFrame({"Prediction Value": value_pred, "Prediction Result": result_arr})
+    # Iterasi melalui setiap baris di DataFrame yang diunggah
+    for index, row in uploaded_df.iterrows():
+        # Buat DataFrame untuk satu baris hasil prediksi
+        data_tab2_normalized = pd.DataFrame([row], columns=uploaded_df.columns)
 
+        # Lakukan prediksi dan tambahkan hasilnya ke dalam DataFrame result_df
+        prediction_tab2 = model.predict(data_tab2_normalized)
+        result_df = result_df.append({"Prediction Value": prediction_tab2[0], "Prediction Result": "Healthy" if prediction_tab2[0] == 0 else "Unhealthy"}, ignore_index=True)
 
-        col1, col2 = st.columns([1, 2])
-
-        with col1:
-            st.dataframe(uploaded_df)
-        with col2:
-            st.dataframe(uploaded_result)
+    # Menampilkan DataFrame yang diunggah dan hasil prediksinya
+    col1, col2 = st.columns([1, 2])
+    with col1:
+        st.dataframe(uploaded_df)
+    with col2:
+        st.dataframe(result_df)
 

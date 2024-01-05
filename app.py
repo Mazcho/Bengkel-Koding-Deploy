@@ -74,28 +74,30 @@ with open("min_max_values.json", "r") as json_file:
 tab1,tab2 = st.tabs(["Single Predixt","Multi Predict"])
 
 with tab1:
+    col1,col2 = st.columns()
 # membuat kolom inputan untuk single prediksi
     #kolom umur
-    age = st.number_input("Age")
+    with col1:
+        age = st.number_input("Age")
 
-    #kolom sex, 1 untuk cowok 0 untuk cewek
-    sex = int(st.selectbox("Sex", options=["Male", "Female"]) == "Male")
+        #kolom sex, 1 untuk cowok 0 untuk cewek
+        sex = int(st.selectbox("Sex", options=["Male", "Female"]) == "Male")
 
-    #Chest pain tipenya
-    cp_options = {
-        1 : "Typical angina",
-        2 : "Atypical angina",
-        3 : "Non-anginal pain",
-        4 : "Asymptomatic"
-    }
-    cp = st.selectbox("Chest Pain Type", options=list(cp_options.keys()), format_func=lambda x: cp_options[x])
-    selected_value = cp_options[cp]
+        #Chest pain tipenya
+        cp_options = {
+            1 : "Typical angina",
+            2 : "Atypical angina",
+            3 : "Non-anginal pain",
+            4 : "Asymptomatic"
+        }
+        cp = st.selectbox("Chest Pain Type", options=list(cp_options.keys()), format_func=lambda x: cp_options[x])
+        selected_value = cp_options[cp]
 
-    #inputan untuk kolom trestbps
-    trestbps = st.number_input("Trestbps mm Hg")
+        #inputan untuk kolom trestbps
+        trestbps = st.number_input("Trestbps mm Hg")
 
-    #inputan untuk kolom chol
-    chol = st.number_input("Serum Cholestoral in mg/dl")
+        #inputan untuk kolom chol
+        chol = st.number_input("Serum Cholestoral in mg/dl")
 
     #inputan untuk fbs dengan urutan sesuai index
     fbs = int(st.selectbox("Fasting Blood Sugar > 120 mg/dl", options=["True", "False"]) == "True")

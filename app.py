@@ -45,7 +45,7 @@ if menu == "Home":
     st.write("")
 
     #membuat grafik
-    tingkat_serangan_jantung = df.groupby(["age","target"]).size().unstack()
+    tingkat_serangan_jantung = df.groupby(["age","target"]).size()
     st.bar_chart(tingkat_serangan_jantung)
 
     # #grafik 2

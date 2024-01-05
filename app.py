@@ -140,7 +140,7 @@ with tab1:
         prediction = model.predict(datauser_normalized)
 
         if prediction[0] == 0:
-            st.succes("👍 You are Healthy")
+            st.success("👍 You are Healthy")
         else:
             st.error(" 💔 You are diagnosed with heart disease")
 

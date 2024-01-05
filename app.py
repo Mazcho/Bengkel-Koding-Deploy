@@ -45,8 +45,8 @@ if menu == "Home":
     st.write("")
 
     #membuat grafik
-    tingkat_serangan_jantung = df.groupby(["age","target"]).size()
-    st.bar_chart(tingkat_serangan_jantung)
+    tingkat_serangan_jantung_by_umur = df.groupby(["age","target"]).size().unstack()
+    st.bar_chart(tingkat_serangan_jantung_by_umur)
 
     # #grafik 2
     # st.write("Dari jumlah kasus kematian yang ada pun juga jauh lebih tinggi dari pada yanh tidak meninggal. Grafik dibaah ini menunjukkan bahwa, 810 dari 1319 orang terkena penyakit jantung")

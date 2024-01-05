@@ -52,7 +52,7 @@ if menu == "Home":
     st.header("chest pain type analysis Data")
     col9,col10 = st.columns(2)
     with col9:
-        st.write("The data below shows that many people experience chest disease without symptoms. Asymptomatic chest pain refers to a condition in which a person does not feel chest pain or clinical symptoms that are usually associated with heart disease. "Asymptomatic" itself means without symptoms or not showing any disease. In the context of chest pain, people who experience chest pain without symptoms do not experience the pain or discomfort that is generally associated with heart problems.")
+        st.write("The data below shows that many people experience chest disease without symptoms. Asymptomatic chest pain refers to a condition in which a person does not feel chest pain or clinical symptoms that are usually associated with heart disease. Asymptomatic itself means without symptoms or not showing any disease. In the context of chest pain, people who experience chest pain without symptoms do not experience the pain or discomfort that is generally associated with heart problems.")
     with col10:
             # Membuat mapping antara nilai dan label
         mapping_cp = {

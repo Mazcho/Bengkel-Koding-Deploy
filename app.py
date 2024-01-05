@@ -27,9 +27,36 @@ with st.sidebar:
         "Chhose Menu",
         ("Home", "App")
     )
+if menu == "Home":
+    st.header("Hi, Selamat data di website hello heart")
+    col11,col12 = st.columns(2)
+    with col11:
+        st.image("heart-rate_9108205.png",width = 300)
+    with col12:
+        st.write("Hello heart adalah sebuah website yang digunakan untuk melakukan pendeteksian apakah seseorang ini berpotensi terkena penyakit jantung Cardiovascular illnesses (CVDs) . Web app ini berawal dari pengambilan sampel dari 1319 orang di wilayah boston pada 2 bulan terahkir. App ini menggunakan model dari Gradient Boosting Regresor dengan tinggal akurasi sebesar 99% untuk masing masing kelasnya. Jadi tidak perlu diragukan lagi untuk menggunakan web app ini untuk mendeteksi 0potensi serangan jantung pada masyarakat sekitar.")
+    
+    st.header("Analisis Singkat")
+    st.write("Mengambil dari dataset yang ada, terdapat banyak orang yang terkena penyakit jantung pada umur 60 hingga 70 tahun adanya.Menurut grafik dibawah, menunjukkan bahwa mulai umur 20 pun juga sudah terkena penyakit serangan antung. Tentu hal ini sangat memprihatinkan untuk para pemuda pemuda di masa sekarang.")
+    st.write("")
 
+    # #membuat grafik
+    # tingkatkematian_umur = df.groupby(["age","class"]).size().unstack()
+    # st.bar_chart(tingkatkematian_umur)
 
-if menu == "App":
+    # #grafik 2
+    # st.write("Dari jumlah kasus kematian yang ada pun juga jauh lebih tinggi dari pada yanh tidak meninggal. Grafik dibaah ini menunjukkan bahwa, 810 dari 1319 orang terkena penyakit jantung")
+    # perbandingan_mati_hidup = df["class"].value_counts()
+    # st.bar_chart(perbandingan_mati_hidup)
+
+    st.header("Kesimpulan dari hasil analisis singkat")
+    col9,col10 = st.columns(2)
+    with col9:
+        st.write("Bisa kita lihat pada hasil diagram diatas, menunjukkan bahwa pada kelas negativ ( orang yang tidak memiliki potensi serangan jantung) jumlah lebih sedikit dari pada orang oarang yang terkena potensi serang jantung. Kita ketahui bahwa rasa peduli orang orang dengan kesehatan jantungnya sangat sedikit sekali ")
+    with col10:
+        st.write("Maka dari itu , banyak orang masih belum mengetahui cara menjaga kesehatan dari jantung. Menjaga kesehatan jantung itu sangatlah penting untuk kesehatan. Maka dari itu website Hello Heart menyajikan App berbasis web untuk melakukan pengecekan terhadap kondisi anda, dan memberikan tips untuk menjaga keseahtan jantung kalian semua")
+    
+
+elif menu == "App":
     st.title("Hungarian Heart Disease")
 
     algoritma_terpilih = st.selectbox("Pilih Algoritma", options=["K-NN", "RandomForest", "xGBoost"])

@@ -61,6 +61,9 @@ y_pred = model.predict(X_test)
 # kalkuliasi akurasi
 accuracy = accuracy_score(y_test, y_pred)
 
+
+st.sidebar(st.input_number("halo"))
+
 # Display the accuracy
 st.write(f"Accuracy dari pickel: ",round(accuracy*100,1))
 

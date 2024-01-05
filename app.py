@@ -66,11 +66,11 @@ if menu == "Home":
             4: "Asymptomatic"
         }
 
-    # Mengganti label pada sumbu x dengan mapping
-    chest_pain_type = df["cp"].map(mapping_cp).value_counts()
+        # Mengganti label pada sumbu x dengan mapping
+        chest_pain_type = df["cp"].map(mapping_cp).value_counts()
 
-    # Menampilkan diagram batang dengan label yang sudah diganti
-    st.bar_chart(chest_pain_type)
+        # Menampilkan diagram batang dengan label yang sudah diganti
+        st.bar_chart(chest_pain_type)
 
 elif menu == "App":
     st.title("Hungarian Heart Disease")

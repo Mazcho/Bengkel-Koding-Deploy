@@ -19,7 +19,7 @@ st.set_page_config(
     page_icon=":heart:"
 )
 
-st.title(":green[_Hungarian_] :red[_HEART_] WEBSITE")
+st.title(":green[_HUNGARIAN_] :red[_HEART_] WEBSITE")
 # ===================================
 
 

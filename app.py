@@ -19,7 +19,7 @@ st.set_page_config(
     page_icon=":heart:"
 )
 
-st.title(":red[_HUNGARIAN_] HEART :green[_WEBSITE_] ")
+
 # ===================================
 
 
@@ -35,6 +35,7 @@ with st.sidebar:
         ("Home","About Data Set","App")
     )
 if menu == "Home":
+    st.title(":red[_HUNGARIAN_] HEART :green[_WEBSITE_] ")
     st.header("Hi, Welcome to the Hungarian heart disease prediction website")
     col11,col12 = st.columns(2)
     with col11:

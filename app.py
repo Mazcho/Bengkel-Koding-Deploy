@@ -152,34 +152,48 @@ with tab2:
     # ...
 
 # Normalisasi input di dalam tab 2
-if uploaded_df:
+# ...
+
+# Normalisasi input di dalam tab 2
+if file_uploaded:
+    # Menggunakan st.file_uploader untuk mengunggah file CSV
+    uploaded_df = pd.read_csv(file_uploaded)
+
     # Load JSON values from file
     with open("min_max_values.json", "r") as json_file:
         min_max_values_json = json.load(json_file)
 
-    # Iterate through each column in the uploaded DataFrame
-    for column in uploaded_df.columns:
-        # Check if the column is present in min_max_values_json
-        if column in min_max_values_json:
-            # Normalize the column values
-            uploaded_df[column] = (uploaded_df[column] - min_max_values_json[column]["min"]) / (min_max_values_json[column]["max"] - min_max_values_json[column]["min"])
+    # Ensure that the DataFrame is not empty before attempting to iterate
+    if not uploaded_df.empty:
+        # Iterate through each column in the uploaded DataFrame
+        for column in uploaded_df.columns:
+            # Check if the column is present in min_max_values_json
+            if column in min_max_values_json:
+                # Normalize the column values
+                uploaded_df[column] = (uploaded_df[column] - min_max_values_json[column]["min"]) / (min_max_values_json[column]["max"] - min_max_values_json[column]["min"])
 
-    # Membuat DataFrame untuk hasil prediksi
-    result_df = pd.DataFrame(columns=["Prediction Value", "Prediction Result"])
+        # Convert specific columns to float64
+        float_columns = ["trestbps", "chol", "fbs", "restecg", "thalach", "exang", "oldpeak"]
+        uploaded_df[float_columns] = uploaded_df[float_columns].astype(float)
 
-    # Iterasi melalui setiap baris di DataFrame yang diunggah
-    for index, row in uploaded_df.iterrows():
-        # Buat DataFrame untuk satu baris hasil prediksi
-        data_tab2_normalized = pd.DataFrame([row], columns=uploaded_df.columns)
+        # Membuat DataFrame untuk hasil prediksi
+        result_df = pd.DataFrame(columns=["Prediction Value", "Prediction Result"])
 
-        # Lakukan prediksi dan tambahkan hasilnya ke dalam DataFrame result_df
-        prediction_tab2 = model.predict(data_tab2_normalized)
-        result_df = result_df.append({"Prediction Value": prediction_tab2[0], "Prediction Result": "Healthy" if prediction_tab2[0] == 0 else "Unhealthy"}, ignore_index=True)
+        # Iterasi melalui setiap baris di DataFrame yang diunggah
+        for index, row in uploaded_df.iterrows():
+            # Buat DataFrame untuk satu baris hasil prediksi
+            data_tab2_normalized = pd.DataFrame([row], columns=uploaded_df.columns)
 
-    # Menampilkan DataFrame yang diunggah dan hasil prediksinya
-    col1, col2 = st.columns([1, 2])
-    with col1:
-        st.dataframe(uploaded_df)
-    with col2:
-        st.dataframe(result_df)
+            # Lakukan prediksi dan tambahkan hasilnya ke dalam DataFrame result_df
+            prediction_tab2 = model.predict(data_tab2_normalized)
+            result_df = result_df.append({"Prediction Value": prediction_tab2[0], "Prediction Result": "Healthy" if prediction_tab2[0] == 0 else "Unhealthy"}, ignore_index=True)
+
+        # Menampilkan DataFrame yang diunggah dan hasil prediksinya
+        col1, col2 = st.columns([1, 2])
+        with col1:
+            st.dataframe(uploaded_df)
+        with col2:
+            st.dataframe(result_df)
+    else:
+        st.warning("Uploaded DataFrame is empty.")
 

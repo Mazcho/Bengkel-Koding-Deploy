@@ -121,6 +121,7 @@ with tab1:
     #membuat data input menjadi dataframe
     data_input = [[age, sex, cp, trestbps, chol, fbs, restecg, thalac, exang, oldpeak]]
     datauser = pd.DataFrame(data_input, columns=["Age", "Sex", "ChestPainType", "Trestbps", "Chol", "Fbs", "Restecg", "Thalac", "Exang", "OldPeak"])
+    st.write(datauser)
     # Normalize the inputs based on min_max_values
     normalized_inputs = [
     (value - min_max_values[key]["min"]) / (min_max_values[key]["max"] - min_max_values[key]["min"])

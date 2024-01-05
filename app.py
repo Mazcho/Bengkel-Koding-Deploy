@@ -65,12 +65,14 @@ if menu == "Home":
             3: "Non-anginal pain",
             4: "Asymptomatic"
         }
-
         # Mengganti label pada sumbu x dengan mapping
         chest_pain_type = df["cp"].map(mapping_cp).value_counts()
 
-        # Menampilkan diagram batang dengan label yang sudah diganti
-        st.bar_chart(chest_pain_type)
+        # Menampilkan diagram batang dengan label yang sudah diganti dan rotasi 45 derajat
+        chart = st.bar_chart(chest_pain_type)
+
+        # Mengatur rotasi label sumbu x
+        chart.ax.tick_params(axis='x', rotation=45)
 
 elif menu == "App":
     st.title("Hungarian Heart Disease")

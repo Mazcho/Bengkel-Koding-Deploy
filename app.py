@@ -32,7 +32,7 @@ df = pd.read_csv("Hungarian_Data.csv")
 with st.sidebar:
     menu = st.radio(
         "Hungarian Heart Website Menu",
-        ("Home", "App")
+        ("Home","About Data Set","App")
     )
 if menu == "Home":
     st.header("Hi, Welcome to the Hungarian heart disease prediction website")
@@ -68,6 +68,19 @@ if menu == "Home":
 
         # Menampilkan diagram batang dengan label yang sudah diganti
         st.bar_chart(chest_pain_type)
+elif menu=="About Data Set":
+    # Informasi tentang dataset
+    info_dataset = """
+    This application utilizes the Hungarian Heart Disease Dataset sourced from the UCI Machine Learning Repository. 
+    Comprising 294 observations and 14 attributes, the dataset focuses on determining the presence or absence of heart disease in the patients.
+    """
+
+    # Link ke UCI Machine Learning Repository
+    link_uciml = "[UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/45/heart+disease)"
+
+    # Menampilkan informasi dan link
+    st.write(info_dataset)
+    st.markdown(f"Access to the dataset is available at: {link_uciml}")
 
 elif menu == "App":
     st.title("Hungarian Heart Disease")

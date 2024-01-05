@@ -130,7 +130,7 @@ elif menu == "App":
 
 
     # Display the accuracy
-    st.write(f"Accuracy dari pickel: ",round(accuracy*100,1))
+    st.write(f"Accuracy Model: ",round(accuracy*100,1))
 
     # ===================================================
 

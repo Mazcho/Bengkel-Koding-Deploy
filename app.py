@@ -31,7 +31,7 @@ df = pd.read_csv("Hungarian_Data.csv")
 # Load the pre-trained model
 with st.sidebar:
     menu = st.radio(
-        "Chhose Menu",
+        "Hungarian Heart Website Menu",
         ("Home", "App")
     )
 if menu == "Home":
@@ -42,7 +42,7 @@ if menu == "Home":
     with col12:
         st.write("Welcome to Hungarian Heart, the superior platform for heart disease prediction in the Hungarian region! Based on data from a number of individuals in the region, we are proud to provide accurate predictions using some of the leading models. Our K-Nearest Neighbors (KNN) model has achieved an accuracy of 93.6%, while the XGBoost model shows an accuracy of 91.4%, and the Random Forest model reaches 92%. With this performance, Hungarian Heart is ready to help you detect and prevent potential risks of heart disease. Let's take care of your health together! 💓")
     
-    st.header("Analisis Singkat")
+    st.header("Brief Analysis")
     st.write("In this brief analysis, 0.0 indicates that the person is healthy, and more than 0.0 indicates that the person has heart disease. From the data presented, there are 187 people who have good heart health (0.0), and as many as 106 people have a diagnosis of heart disease.")
     st.write("")
 

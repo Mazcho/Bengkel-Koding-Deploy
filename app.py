@@ -1,10 +1,10 @@
-# import itertools
+# ini import library
 import pandas as pd
 import numpy as np
 from imblearn.over_sampling import SMOTE
 from sklearn.metrics import accuracy_score
 import streamlit as st
-# import time
+import time
 import pickle
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
@@ -53,10 +53,10 @@ featured_smote_resampled_normalisasi = normalisasiminmax.fit_transform(featured_
 
 X_train, X_test, y_train, y_test = train_test_split(featured_smote_resampled_normalisasi, target_smote_resampled, test_size=0.2, random_state=42,stratify = target_smote_resampled)
 
-# Predict on the test set
+# hasil prediksi model dalam %
 y_pred = model.predict(X_test)
 
-# Calculate accuracy
+# kalkuliasi akurasi
 accuracy = accuracy_score(y_test, y_pred)
 
 # Display the accuracy
@@ -71,16 +71,15 @@ with open("min_max_values.json", "r") as json_file:
 tab1,tab2 = st.tabs(["Single Predixt","Multi Predict"])
 
 with tab1:
-# Example inputs (you need to obtain these values from your UI components)
+# membuat kolom inputan untuk single prediksi
+    #kolom umur
     age = st.number_input("Age")
+
+    #kolom sex, 1 untuk cowok 0 untuk cewek
     sex = int(st.selectbox("Sex", options=["Male", "Female"]) == "Male")
     st.write(sex)
-    # cp = ["Typical angina", "atypical angina", "non-anginal pain", "asymptomatic"].index(
-    #     st.selectbox("Chest Pain Type", ["Typical angina", "atypical angina", "non-anginal pain", "asymptomatic"])
-    # )
-    # st.write(cp)
 
-    # anemia = st.number_input("Masukan anemia", value=0)
+    #Chest pain tipenya
     cp_options = {
         1 : "Typical angina",
         2 : "Atypical angina",
@@ -91,26 +90,40 @@ with tab1:
     selected_value = cp_options[cp]
     st.write(cp)
 
+    #inputan untuk kolom trestbps
     trestbps = st.number_input("Trestbps mm Hg")
+
+    #inputan untuk kolom chol
     chol = st.number_input("Serum Cholestoral in mg/dl")
+
+    #inputan untuk fbs dengan urutan sesuai index
     fbs = int(st.selectbox("Fasting Blood Sugar > 120 mg/dl", options=["True", "False"]) == "True")
     st.write(fbs)
     restecg = ["Normal", "St-T Wave Abnormality", "Left Ventricular Hypertrophy"].index(
         st.selectbox("Resting Electrocardiographic Results", ["Normal", "St-T Wave Abnormality", "Left Ventricular Hypertrophy"])
     )
     st.write(restecg)
+
+    # inputan thalac
     thalac = st.number_input("Maximum Heart Rate Achieved")
+
+    #inputan exan
     exang = int(st.selectbox("Exercise Induced Angina", options=["No", "Yes"]) == "Yes")
     st.write(exang)
+
+    #inputan oldpeak
     oldpeak = st.number_input("OldPeak")
 
+    #memb uat tombol prediksi
     predict_button = st.button("Predict", type="primary")
     result = "-"
 
+    #membuat data input menjadi dataframe
     data_input = [[age, sex, cp, trestbps, chol, fbs, restecg, thalac, exang, oldpeak]]
     datauser = pd.DataFrame(data_input, columns=["Age", "Sex", "ChestPainType", "Trestbps", "Chol", "Fbs", "Restecg", "Thalac", "Exang", "OldPeak"])
     st.write(datauser)
     
+    #ini untuk triger ketika tombol predik dipencet
     if predict_button:
         # Now, you can use normalized_inputs for prediction
         prediction = model.predict(data_input)
@@ -122,8 +135,11 @@ with tab1:
             st.write("Heart Disease")
 
 with tab2:
+    #ini untuk multi prediksi
+    #upload csv
     file_uploaded = st.file_uploader("Upload a CSV file", type='csv')
 
+    #untuk akses data dan memprediksi steiap barisnya 
     if file_uploaded:
         uploaded_df = pd.read_csv(file_uploaded)
         prediction_arr = model.predict(uploaded_df)
@@ -134,6 +150,7 @@ with tab2:
         value_pred = []
         result_arr = []
 
+        #ini untuk memasukan hasil prediksi dan menambahkan pada array 
         for prediction in prediction_arr:
             if prediction == 0:
                 result = "Healthy"
@@ -143,6 +160,8 @@ with tab2:
             value_pred.append(prediction)
             result_arr.append(result)
         
+
+        #menampilkan dataframe dari array
         uploaded_result = pd.DataFrame({"Prediction Value": value_pred, "Prediction Result": result_arr})
 
 

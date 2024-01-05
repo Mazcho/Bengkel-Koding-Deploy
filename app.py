@@ -22,7 +22,7 @@ st.set_page_config(
 
 #========= Load MOdel ==========================
 # Load the pre-trained model
-algoritma_terpilih = st.selectbox("Algoritma", options=["K-NN", "RandomForest"])
+algoritma_terpilih = st.selectbox("Algoritma", options=["K-NN", "RandomForest","xGBoost"])
 
 if algoritma_terpilih == "K-NN":
     with open('knnmodel.pkl', 'rb') as file:

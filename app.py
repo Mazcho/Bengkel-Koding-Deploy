@@ -142,64 +142,41 @@ with tab1:
         else:
             st.write("Heart Disease")
 
-# Normalization function
-def normalize_input(input_data, min_max_values):
-    normalized_inputs = [
-        (value - min_max_values[key]["min"]) / (min_max_values[key]["max"] - min_max_values[key]["min"])
-        for key, value in zip(min_max_values.keys(), input_data)
-    ]
-    return normalized_inputs
-
 with tab2:
+    #ini untuk multi prediksi
+    #upload csv
     file_uploaded = st.file_uploader("Upload a CSV file", type='csv')
 
+    #untuk akses data dan memprediksi steiap barisnya 
     if file_uploaded:
         uploaded_df = pd.read_csv(file_uploaded)
+        prediction_arr = model.predict(uploaded_df)
 
-        # Extract features from the uploaded data
-        features = uploaded_df.iloc[:, :-1]  # Assuming the target column is the last one
-
-        # Normalize the features using the normalization function
-        normalized_features = features.apply(lambda row: normalize_input(row, min_max_values), axis=1)
-
-        # Convert the normalized features back to a DataFrame
-        normalized_df = pd.DataFrame(normalized_features.tolist(), columns=features.columns)
-
-        # Combine the normalized features with the original input
-        combined_df = pd.concat([features, normalized_df], axis=1)
-
-        # Perform predictions on the normalized features
-        prediction_arr = model.predict(normalized_df)
-
-        # Your existing code for displaying predictions
         bar = st.progress(0)
         status_text = st.empty()
 
         value_pred = []
         result_arr = []
 
+        #ini untuk memasukan hasil prediksi dan menambahkan pada array 
         for prediction in prediction_arr:
             if prediction == 0:
                 result = "Healthy"
             else:
-                result = "Unhealthy"
-
+                result = "Unhealty"
+            
             value_pred.append(prediction)
             result_arr.append(result)
+        
 
+        #menampilkan dataframe dari array
         uploaded_result = pd.DataFrame({"Prediction Value": value_pred, "Prediction Result": result_arr})
 
-        col1, col2, col3 = st.columns([1, 1, 2])
+
+        col1, col2 = st.columns([1, 2])
 
         with col1:
-            st.header("User Input (Unnormalized)")
-            st.dataframe(features)
-
+            st.dataframe(uploaded_df)
         with col2:
-            st.header("User Input (Normalized)")
-            st.dataframe(normalized_df)
-
-        with col3:
-            st.header("Prediction Result")
             st.dataframe(uploaded_result)
 

@@ -21,7 +21,7 @@ st.set_page_config(
 
 #========= Load MOdel ==========================
 # Load the pre-trained model
-algoritma_terpilih = st.selectbox("Algoritma", options=["K-NN", "RandomForest", "xGBoost"])
+algoritma_terpilih = st.selectbox("Algoritma", options=["K-NN", "RandomForest"])
 
 if algoritma_terpilih == "K-NN":
     with open('knnmodel.pkl', 'rb') as file:
@@ -31,8 +31,8 @@ elif algoritma_terpilih == "RandomForest":
     with open('randomforest_Oversampled_normalisasi.pkl', 'rb') as file:
         model = pickle.load(file)
 
-elif algoritma_terpilih == "xGBoost":
-    model = joblib.load("xgboost_model_tuning.joblib")
+# elif algoritma_terpilih == "xGBoost":
+#     model = joblib.load("xgboost_model_tuning.joblib")
 
 
 #========== Load Data Set ======================

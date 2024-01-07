@@ -24,7 +24,7 @@ st.set_page_config(
 
 
 #========== Load Data Set ======================
-df = pd.read_csv("Tugas_3_BKDS07_Nicholaus_Verdhy/Hungarian_Data.csv")
+df = pd.read_csv("Hungarian_Data.csv")
 #===============================================
 
 #========= Load MOdel ==========================

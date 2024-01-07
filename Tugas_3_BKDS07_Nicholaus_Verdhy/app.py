@@ -24,7 +24,7 @@ st.set_page_config(
 
 
 #========== Load Data Set ======================
-df = pd.read_csv("Hungarian_Data.csv")
+df = pd.read_csv("Tugas_3_BKDS07_Nicholaus_Verdhy/Hungarian_Data.csv")
 #===============================================
 
 #========= Load MOdel ==========================
@@ -94,15 +94,15 @@ elif menu == "App":
     algoritma_terpilih = st.selectbox("Pilih Algoritma", options=["K-NN", "RandomForest", "xGBoost"])
 
     if algoritma_terpilih == "K-NN":
-        with open('knnmodel.pkl', 'rb') as file:
+        with open('Tugas_3_BKDS07_Nicholaus_Verdhy/knnmodel.pkl', 'rb') as file:
             model = pickle.load(file)
 
     elif algoritma_terpilih == "RandomForest":
-        with open('randomforest_Oversampled_normalisasi.pkl', 'rb') as file:
+        with open('Tugas_3_BKDS07_Nicholaus_Verdhy/randomforest_Oversampled_normalisasi.pkl', 'rb') as file:
             model = pickle.load(file)
 
     elif algoritma_terpilih == "xGBoost":
-        with open('xgBoost_tuning.pkl', 'rb') as file:
+        with open('Tugas_3_BKDS07_Nicholaus_Verdhy/xgBoost_tuning.pkl', 'rb') as file:
             model = pickle.load(file)
 
 
